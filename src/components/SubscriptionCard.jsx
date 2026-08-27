@@ -1,3 +1,4 @@
+```jsx
 import { Check, Wifi, Zap, Star } from "lucide-react";
 
 export default function SubscriptionCard({
@@ -14,15 +15,17 @@ export default function SubscriptionCard({
       }`}
     >
       {/* =========================
-          CARD CONTENT
+          المحتوى الأساسي
       ========================= */}
-    {plan.featured && (
-  <span className="absolute top-4 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-soft whitespace-nowrap z-30">
-    <Star size={13} fill="currentColor" />
-    الأكثر طلبًا
-  </span>
-)}
 
+      {plan.featured && (
+        <span className="absolute top-4 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-soft whitespace-nowrap z-30">
+          <Star size={13} fill="currentColor" />
+          الأكثر طلبًا
+        </span>
+      )}
+
+      <div className="relative z-10 flex flex-col h-full">
         {/* اسم الباقة */}
         <div className="mb-6 pt-8">
           <h3
@@ -69,17 +72,10 @@ export default function SubscriptionCard({
           </span>
         </div>
 
-        <p
-          className={`text-xs mb-6 ${
-            plan.featured ? "text-white/60" : "text-ink-soft/80"
-          }`}
-        >
-        </p>
-
         {/* الإنترنت والكهرباء */}
         {!compact && (
           <div
-            className={`flex items-center gap-4 text-xs font-semibold mb-6 pb-6 border-b ${
+            className={`flex items-center gap-4 text-xs font-semibold mb-6 mt-6 pb-6 border-b ${
               plan.featured
                 ? "border-white/15"
                 : "border-paper-line"
@@ -164,30 +160,19 @@ export default function SubscriptionCard({
         </button>
       </div>
 
-      {/* ==================================================
-          HOVER DETAILS
-          ================================================== */}
+      {/* =========================
+          Hover Overlay
+      ========================= */}
+
       {plan.variants && (
         <div
-          className={`
-            absolute inset-0 z-50
-            flex flex-col
-            p-6 sm:p-7
-            rounded-2xl
-            transition-all duration-300 ease-out
-
-            opacity-0 invisible
-            group-hover:opacity-100
-            group-hover:visible
-
-            ${
-              plan.featured
-                ? "bg-primary"
-                : "bg-white"
-            }
-          `}
+          className={`absolute inset-0 z-50 flex flex-col p-6 sm:p-7 rounded-2xl transition-all duration-300 ease-out opacity-0 invisible group-hover:opacity-100 group-hover:visible ${
+            plan.featured
+              ? "bg-primary"
+              : "bg-white"
+          }`}
         >
-          {/* رأس الـ Overlay */}
+          {/* عنوان التفاصيل */}
           <div className="flex items-center justify-between mb-6">
             <div>
               <h4
@@ -229,19 +214,16 @@ export default function SubscriptionCard({
             </div>
           </div>
 
-          {/* قائمة الأسعار */}
-          <div className="grid grid-cols-2 gap-3 flex-1 content-start">
+          {/* الأسعار */}
+          <div className="grid grid-cols-2 gap-3 flex-1 content-start overflow-y-auto">
             {plan.variants.map((variant) => (
               <div
                 key={variant.category}
-                className={`
-                  rounded-xl p-4 border
-                  ${
-                    plan.featured
-                      ? "bg-white/10 border-white/10"
-                      : "bg-paper-alt border-paper-line"
-                  }
-                `}
+                className={`rounded-xl p-4 border ${
+                  plan.featured
+                    ? "bg-white/10 border-white/10"
+                    : "bg-paper-alt border-paper-line"
+                }`}
               >
                 <h5
                   className={`text-sm font-bold mb-3 ${
@@ -304,3 +286,4 @@ export default function SubscriptionCard({
     </div>
   );
 }
+```
