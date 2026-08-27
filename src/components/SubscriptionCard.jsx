@@ -16,13 +16,7 @@ export default function SubscriptionCard({
       {/* =========================
           CARD CONTENT
       ========================= */}
-      <div className="relative z-10 flex flex-col h-full">
-        {plan.featured && (
-          <span className="absolute -top-3.5 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-soft whitespace-nowrap">
-            <Star size={13} fill="currentColor" />
-            الأكثر طلبًا
-          </span>
-        )}
+    
 
         {/* اسم الباقة */}
         <div className="mb-6">
