@@ -106,14 +106,62 @@ export default function SubscriptionCard({ plan, onSubscribe, compact = false })
         </div>
       )}
 
-      {/* ⭐ تفاصيل الأسعار الشهرية */}
-      {plan.variants && (
+{plan.variants && (
+  <div
+    className={`mb-6 rounded-xl border p-3 ${
+      plan.featured
+        ? "border-white/20 bg-white/10"
+        : "border-paper-line bg-paper-alt"
+    }`}
+  >
+    <h4
+      className={`text-sm font-bold mb-3 ${
+        plan.featured ? "text-white" : "text-ink"
+      }`}
+    >
+      تفاصيل الاشتراك
+    </h4>
+
+    <div className="grid grid-cols-2 gap-2.5">
+      {plan.variants.map((variant) => (
         <div
-          className={`mb-6 rounded-xl border p-4 ${
+          key={variant.category}
+          className={`rounded-lg px-3 py-2 ${
             plan.featured
-              ? "border-white/20 bg-white/10"
-              : "border-paper-line bg-paper-alt"
+              ? "bg-white/10"
+              : "bg-white border border-paper-line"
           }`}
+        >
+          <p
+            className={`text-xs font-bold mb-1.5 ${
+              plan.featured ? "text-white" : "text-primary"
+            }`}
+          >
+            {variant.category}
+          </p>
+
+          {variant.options.map((option) => (
+            <div
+              key={option.name}
+              className={`flex justify-between items-center gap-2 text-xs leading-5 ${
+                plan.featured ? "text-white/80" : "text-ink-soft"
+              }`}
+            >
+              <span>{option.name}</span>
+              <span
+                className={`font-bold whitespace-nowrap ${
+                  plan.featured ? "text-white" : "text-ink"
+                }`}
+              >
+                {option.price} ₪
+              </span>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
+)}
         >
           <h4
             className={`text-sm font-bold mb-4 ${
