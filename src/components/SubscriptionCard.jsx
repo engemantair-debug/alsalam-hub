@@ -24,15 +24,15 @@ export default function SubscriptionCard({
   </span> 
 )} 
 
-<div className="relative z-10 flex flex-col h-full"> 
-  {/* اسم الباقة */} 
-  <div className="mb-6 pt-14"> 
+<div className="relative z-10 flex flex-col h-full pt-8">
+
+  <div className="mb-6">
     <h3 
-      className={`font-display font-bold text-xl mb-1 ${ 
-        plan.featured ? "text-white" : "text-ink" 
-      }`} 
-    > 
-      {plan.name} 
+      className={`font-display font-bold text-xl mb-1 ${
+        plan.featured ? "text-white" : "text-ink"
+      }`}
+    >
+      {plan.name}
     </h3>
 
           <p
