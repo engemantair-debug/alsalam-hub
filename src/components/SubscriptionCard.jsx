@@ -34,7 +34,7 @@ export default function SubscriptionCard({ plan, onSubscribe, compact = false })
         </p>
       </div>
 
-      {/* السعر الأساسي */}
+      {/* السعر */}
       <div className="flex items-baseline gap-1.5 mb-1">
         <span
           className={`font-display font-black text-4xl sm:text-5xl ${
@@ -106,53 +106,51 @@ export default function SubscriptionCard({ plan, onSubscribe, compact = false })
         </div>
       )}
 
-      {/* تفاصيل أسعار الباقة الشهرية */}
-      {plan.variants && !compact && (
+      {/* ⭐ تفاصيل الأسعار الشهرية */}
+      {plan.variants && (
         <div
-          className={`mb-6 rounded-xl p-4 border ${
+          className={`mb-6 rounded-xl border p-4 ${
             plan.featured
-              ? "bg-white/10 border-white/15"
-              : "bg-paper-line/30 border-paper-line"
+              ? "border-white/20 bg-white/10"
+              : "border-paper-line bg-paper-alt"
           }`}
         >
           <h4
-            className={`font-bold text-sm mb-4 ${
+            className={`text-sm font-bold mb-4 ${
               plan.featured ? "text-white" : "text-ink"
             }`}
           >
-            الأسعار حسب الفئة
+            تفاصيل الاشتراك
           </h4>
 
-          <div className="flex flex-col gap-4">
+          <div className="space-y-4">
             {plan.variants.map((variant) => (
               <div key={variant.category}>
-                <p
+                <div
                   className={`text-sm font-bold mb-2 ${
-                    plan.featured ? "text-white/90" : "text-ink"
+                    plan.featured ? "text-white" : "text-primary"
                   }`}
                 >
                   {variant.category}
-                </p>
+                </div>
 
-                <div className="flex flex-col gap-1.5">
+                <div className="space-y-1.5">
                   {variant.options.map((option) => (
                     <div
                       key={option.name}
-                      className="flex items-center justify-between gap-3 text-sm"
+                      className={`flex justify-between items-center text-sm ${
+                        plan.featured
+                          ? "text-white/80"
+                          : "text-ink-soft"
+                      }`}
                     >
-                      <span
-                        className={
-                          plan.featured
-                            ? "text-white/75"
-                            : "text-ink-soft"
-                        }
-                      >
-                        {option.name}
-                      </span>
+                      <span>{option.name}</span>
 
                       <span
-                        className={`font-bold whitespace-nowrap ${
-                          plan.featured ? "text-white" : "text-primary"
+                        className={`font-bold ${
+                          plan.featured
+                            ? "text-white"
+                            : "text-ink"
                         }`}
                       >
                         {option.price} ₪
