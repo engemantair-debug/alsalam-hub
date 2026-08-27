@@ -1,4 +1,3 @@
-```jsx
 import { Check, Wifi, Zap, Star } from "lucide-react";
 
 export default function SubscriptionCard({
@@ -8,34 +7,30 @@ export default function SubscriptionCard({
 }) {
   return (
     <div
-      className={`group relative h-full min-h-[520px] rounded-2xl p-7 sm:p-8 overflow-hidden transition-all duration-300 ${
+      className={`group relative h-full min-h-[520px] rounded-2xl p-7 sm:p-8 overflow-visible transition-all duration-300 ${
         plan.featured
-          ? "bg-primary text-white shadow-lift lg:-translate-y-3 border-2 border-primary"
-          : "bg-white text-ink shadow-card border border-paper-line hover:shadow-lift hover:-translate-y-1.5"
+          ? "bg-primary text-white shadow-lift lg:-translate-y-3 border-2 border-primary mt-4"
+          : "bg-white text-ink shadow-card border border-paper-line hover:shadow-lift hover:-translate-y-1.5 mt-4"
       }`}
     >
-  
+      {/* شارة الأكثر طلباً */}
+      {plan.featured && (
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1">
+          <Star size={12} fill="currentColor" />
+          <span>الأكثر طلباً</span>
+        </div>
+      )}
 
-<div className="relative z-10 flex flex-col h-full">
-
-  {/* اسم الباقة */}
-  <div className="mb-6">
-    <h3
-      className={`font-display font-bold text-xl mb-1 ${
-        plan.featured ? "text-white" : "text-ink"
-      }`}
-    >
-      {plan.name}
-    </h3>
-
-    <p
-      className={`text-sm ${
-        plan.featured ? "text-white/70" : "text-ink-soft"
-      }`}
-    >
-      {plan.duration}
-    </p>
-  </div>
+      <div className="relative z-10 flex flex-col h-full">
+        {/* اسم الباقة */}
+        <div className="mb-6">
+          <h3
+            className={`font-display font-bold text-xl mb-1 ${
+              plan.featured ? "text-white" : "text-ink"
+            }`}
+          >
+            {plan.name}
+          </h3>
 
           <p
             className={`text-sm ${
@@ -237,7 +232,7 @@ export default function SubscriptionCard({
                 </h5>
 
                 <div className="space-y-2">
-                  {variant.options.map((option) => (
+                  {variant.options.main.map((option) => (
                     <div
                       key={option.name}
                       className={`flex items-center justify-between gap-2 text-xs ${
@@ -287,4 +282,3 @@ export default function SubscriptionCard({
     </div>
   );
 }
-```
