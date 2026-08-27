@@ -14,17 +14,9 @@ export default function SubscriptionCard({
           : "bg-white text-ink shadow-card border border-paper-line hover:shadow-lift hover:-translate-y-1.5"
       }`}
     >
-      {/* =========================
-          المحتوى الأساسي
-      ========================= */}
-{plan.featured && (
-  <span className="absolute top-4 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-soft whitespace-nowrap z-30">
-    <Star size={13} fill="currentColor" />
-    الأكثر طلبًا
-  </span>
-)}
+  
 
-<div className={`relative z-10 flex flex-col h-full ${plan.featured ? "pt-16" : ""}`}>
+<div className="relative z-10 flex flex-col h-full">
 
   {/* اسم الباقة */}
   <div className="mb-6">
