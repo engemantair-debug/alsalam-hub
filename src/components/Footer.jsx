@@ -92,8 +92,8 @@ export default function Footer() {
           <div>
             <h4 className="font-display font-bold text-sm text-white/50 mb-4 tracking-wide">ساعات العمل</h4>
             <ul className="flex flex-col gap-2 text-sm text-white/70">
-              <li className="flex justify-between gap-4"><span>السبت - الخميس</span><span dir="ltr">9:00 - 22:00</span></li>
-              <li className="flex justify-between gap-4"><span>الجمعة</span><span dir="ltr">14:00 - 22:00</span></li>
+              <li className="flex justify-between gap-4"><span>السبت - الخميس</span><span dir="ltr">8:00 - 5:00</span></li>
+              <li className="flex justify-between gap-4"><span>الجمعة</span><span dir="ltr">10:00 - 5:00</span></li>
             </ul>
           </div>
         </div>
