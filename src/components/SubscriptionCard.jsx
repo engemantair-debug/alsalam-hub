@@ -16,10 +16,15 @@ export default function SubscriptionCard({
       {/* =========================
           CARD CONTENT
       ========================= */}
-    
+    {plan.featured && (
+  <span className="absolute top-4 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-soft whitespace-nowrap z-30">
+    <Star size={13} fill="currentColor" />
+    الأكثر طلبًا
+  </span>
+)}
 
         {/* اسم الباقة */}
-        <div className="mb-6">
+        <div className="mb-6 pt-8">
           <h3
             className={`font-display font-bold text-xl mb-1 ${
               plan.featured ? "text-white" : "text-ink"
