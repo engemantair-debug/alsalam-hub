@@ -6,13 +6,12 @@
 const subscriptionPlans = [
   {
     id: "basic",
-    name: "الباقة الأساسية",
+    name: "اشتراك ساعات",
     nameEn: "Basic",
-    price: "XX",
+    price: "3",
     currency: "₪",
-    period: "شهر",
-    duration: "اشتراك شهري",
-    hours: "XX ساعة استخدام / شهر",
+    period: "ساعة",
+    duration: "اشتراك بالساعة",
     internet: true,
     power: true,
     featured: false,
@@ -20,18 +19,16 @@ const subscriptionPlans = [
       "استخدام مساحة العمل",
       "الإنترنت",
       "الكهرباء",
-      "المميزات حسب الباقة",
     ],
   },
   {
     id: "standard",
-    name: "الباقة القياسية",
+    name: "الباقة اليومية",
     nameEn: "Standard",
-    price: "XX",
+    price: "18",
     currency: "₪",
-    period: "شهر",
-    duration: "اشتراك شهري",
-    hours: "XX ساعة استخدام / شهر",
+    period: "8:00 AM-6:00PM",
+    duration: "اشتراك يومي",
     internet: true,
     power: true,
     featured: true,
@@ -42,25 +39,56 @@ const subscriptionPlans = [
       "خصم على الورشات التدريبية",
     ],
   },
-  {
-    id: "premium",
-    name: "الباقة المميزة",
-    nameEn: "Premium",
-    price: "XX",
-    currency: "₪",
-    period: "شهر",
-    duration: "اشتراك شهري",
-    hours: "استخدام غير محدود تقريبًا",
-    internet: true,
-    power: true,
-    featured: false,
-    features: [
-      "جميع المميزات",
-      "استخدام أكبر للمساحة",
-      "أولوية في حجز القاعة",
-      "أولوية في بعض الخدمات",
-    ],
-  },
+{
+  id: "premium",
+  name: "الباقة الشهرية",
+  nameEn: "Premium",
+  price: "ابتداءً من 150",
+  currency: "₪",
+  period: "شهر",
+  duration: "اشتراك شهري",
+  hours: "استخدام غير محدود تقريبًا",
+  internet: true,
+  power: true,
+  featured: false,
+
+  variants: [
+    {
+      category: "الطلاب",
+      options: [
+        { name: "مكتبي", price: 150 },
+        { name: "Gaming", price: 200 },
+      ],
+    },
+    {
+      category: "الباحثون عن عمل",
+      options: [
+        { name: "مكتبي", price: 150 },
+        { name: "Gaming", price: 200 },
+      ],
+    },
+    {
+      category: "الفريلانسر",
+      options: [
+        { name: "عادي", price: 200 },
+        { name: "مكتبي", price: 250 },
+      ],
+    },
+    {
+      category: "الشباب",
+      options: [
+        { name: "اشتراك شهري", price: 300 },
+      ],
+    },
+  ],
+
+  features: [
+    "جميع المميزات",
+    "استخدام أكبر للمساحة",
+    "أولوية في حجز القاعة",
+    "أولوية في بعض الخدمات",
+  ],
+}
 ];
 
 export default subscriptionPlans;
