@@ -15,10 +15,10 @@ const SITE_CONFIG = {
   drinkOrderUrl: "DRINK_ORDER_URL",
 
   // 📞 بيانات التواصل
-  phone: "PHONE_NUMBER",
-  whatsapp: "PHONE_NUMBER",
-  email: "EMAIL_ADDRESS",
-  address: "ADDRESS",
+  phone: "0599974686",
+  whatsapp: "+970 599974686",
+  email: "info@alsalamhub.com",
+  address: "دير البلح-شارع السلام-البحيصي ط2",
 
   // 🌐 روابط التواصل الاجتماعي
   social: {
