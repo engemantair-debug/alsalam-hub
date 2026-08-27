@@ -9,7 +9,7 @@ const SITE_CONFIG = {
   nameAr: "مساحة عمل السلام",
 
   // 🔗 رابط تسجيل الدخول لشبكة الواي فاي — استبدله بالرابط الحقيقي
-  wifiLoginUrl: "WIFI_LOGIN_URL",
+     wifiLoginUrl: "http://2.2.2.2/login",
 
   // 🔗 رابط طلب المشروبات (نموذج / بوت واتساب / منصة طلبات) — استبدله بالرابط الحقيقي
   drinkOrderUrl: "DRINK_ORDER_URL",
