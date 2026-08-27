@@ -75,7 +75,6 @@ export default function SubscriptionCard({
             plan.featured ? "text-white/60" : "text-ink-soft/80"
           }`}
         >
-          السعر مثال قابل للتعديل
         </p>
 
         {/* الإنترنت والكهرباء */}
