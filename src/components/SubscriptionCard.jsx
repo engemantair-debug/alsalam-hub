@@ -17,54 +17,184 @@ export default function SubscriptionCard({ plan, onSubscribe, compact = false })
       )}
 
       <div className="mb-6">
-        <h3 className={`font-display font-bold text-xl mb-1 ${plan.featured ? "text-white" : "text-ink"}`}>
+        <h3
+          className={`font-display font-bold text-xl mb-1 ${
+            plan.featured ? "text-white" : "text-ink"
+          }`}
+        >
           {plan.name}
         </h3>
-        <p className={`text-sm ${plan.featured ? "text-white/70" : "text-ink-soft"}`}>{plan.duration}</p>
+
+        <p
+          className={`text-sm ${
+            plan.featured ? "text-white/70" : "text-ink-soft"
+          }`}
+        >
+          {plan.duration}
+        </p>
       </div>
 
+      {/* السعر الأساسي */}
       <div className="flex items-baseline gap-1.5 mb-1">
-        <span className={`font-display font-black text-4xl sm:text-5xl ${plan.featured ? "text-white" : "text-primary"}`}>
+        <span
+          className={`font-display font-black text-4xl sm:text-5xl ${
+            plan.featured ? "text-white" : "text-primary"
+          }`}
+        >
           {plan.price}
         </span>
-        <span className={`text-lg font-bold ${plan.featured ? "text-white/80" : "text-ink-soft"}`}>
+
+        <span
+          className={`text-lg font-bold ${
+            plan.featured ? "text-white/80" : "text-ink-soft"
+          }`}
+        >
           {plan.currency}
         </span>
-        <span className={`text-sm ${plan.featured ? "text-white/60" : "text-ink-soft"}`}>
+
+        <span
+          className={`text-sm ${
+            plan.featured ? "text-white/60" : "text-ink-soft"
+          }`}
+        >
           / {plan.period}
         </span>
       </div>
-      <p className={`text-xs mb-6 ${plan.featured ? "text-white/60" : "text-ink-soft/80"}`}>
+
+      <p
+        className={`text-xs mb-6 ${
+          plan.featured ? "text-white/60" : "text-ink-soft/80"
+        }`}
+      >
         السعر مثال قابل للتعديل
       </p>
 
+      {/* الإنترنت والكهرباء */}
       {!compact && (
-        <div className={`flex items-center gap-4 text-xs font-semibold mb-6 pb-6 border-b ${plan.featured ? "border-white/15" : "border-paper-line"}`}>
-          <span className={`inline-flex items-center gap-1.5 ${plan.featured ? "text-white/85" : "text-ink-soft"}`}>
-            <Wifi size={14} /> إنترنت
+        <div
+          className={`flex items-center gap-4 text-xs font-semibold mb-6 pb-6 border-b ${
+            plan.featured ? "border-white/15" : "border-paper-line"
+          }`}
+        >
+          <span
+            className={`inline-flex items-center gap-1.5 ${
+              plan.featured ? "text-white/85" : "text-ink-soft"
+            }`}
+          >
+            <Wifi size={14} />
+            إنترنت
           </span>
-          <span className={`inline-flex items-center gap-1.5 ${plan.featured ? "text-white/85" : "text-ink-soft"}`}>
-            <Zap size={14} /> كهرباء
+
+          <span
+            className={`inline-flex items-center gap-1.5 ${
+              plan.featured ? "text-white/85" : "text-ink-soft"
+            }`}
+          >
+            <Zap size={14} />
+            كهرباء
           </span>
-          <span className={`${plan.featured ? "text-white/85" : "text-ink-soft"}`}>{plan.hours}</span>
+
+          {plan.hours && (
+            <span
+              className={
+                plan.featured ? "text-white/85" : "text-ink-soft"
+              }
+            >
+              {plan.hours}
+            </span>
+          )}
         </div>
       )}
 
+      {/* تفاصيل أسعار الباقة الشهرية */}
+      {plan.variants && !compact && (
+        <div
+          className={`mb-6 rounded-xl p-4 border ${
+            plan.featured
+              ? "bg-white/10 border-white/15"
+              : "bg-paper-line/30 border-paper-line"
+          }`}
+        >
+          <h4
+            className={`font-bold text-sm mb-4 ${
+              plan.featured ? "text-white" : "text-ink"
+            }`}
+          >
+            الأسعار حسب الفئة
+          </h4>
+
+          <div className="flex flex-col gap-4">
+            {plan.variants.map((variant) => (
+              <div key={variant.category}>
+                <p
+                  className={`text-sm font-bold mb-2 ${
+                    plan.featured ? "text-white/90" : "text-ink"
+                  }`}
+                >
+                  {variant.category}
+                </p>
+
+                <div className="flex flex-col gap-1.5">
+                  {variant.options.map((option) => (
+                    <div
+                      key={option.name}
+                      className="flex items-center justify-between gap-3 text-sm"
+                    >
+                      <span
+                        className={
+                          plan.featured
+                            ? "text-white/75"
+                            : "text-ink-soft"
+                        }
+                      >
+                        {option.name}
+                      </span>
+
+                      <span
+                        className={`font-bold whitespace-nowrap ${
+                          plan.featured ? "text-white" : "text-primary"
+                        }`}
+                      >
+                        {option.price} ₪
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* المميزات */}
       <ul className="flex flex-col gap-3 mb-8 flex-1">
         {plan.features.map((f) => (
-          <li key={f} className="flex items-start gap-2.5 text-sm leading-relaxed">
+          <li
+            key={f}
+            className="flex items-start gap-2.5 text-sm leading-relaxed"
+          >
             <span
               className={`mt-0.5 shrink-0 h-5 w-5 rounded-full flex items-center justify-center ${
-                plan.featured ? "bg-white/15 text-white" : "bg-primary/[0.08] text-primary"
+                plan.featured
+                  ? "bg-white/15 text-white"
+                  : "bg-primary/[0.08] text-primary"
               }`}
             >
               <Check size={12} strokeWidth={3} />
             </span>
-            <span className={plan.featured ? "text-white/90" : "text-ink-soft"}>{f}</span>
+
+            <span
+              className={
+                plan.featured ? "text-white/90" : "text-ink-soft"
+              }
+            >
+              {f}
+            </span>
           </li>
         ))}
       </ul>
 
+      {/* زر الاشتراك */}
       <button
         onClick={() => onSubscribe(plan)}
         className={`inline-flex items-center justify-center gap-2 rounded-full font-bold px-6 py-3.5 transition-all duration-200 ${
