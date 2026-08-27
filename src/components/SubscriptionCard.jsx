@@ -9,13 +9,13 @@ export default function SubscriptionCard({
     <div
       className={`group relative h-full min-h-[520px] rounded-2xl p-7 sm:p-8 overflow-visible transition-all duration-300 ${
         plan.featured
-          ? "bg-primary text-white shadow-lift lg:-translate-y-3 border-2 border-primary mt-4"
-          : "bg-white text-ink shadow-card border border-paper-line hover:shadow-lift hover:-translate-y-1.5 mt-4"
+          ? "bg-primary text-white shadow-lift lg:-translate-y-3 border-2 border-primary mt-6"
+          : "bg-white text-ink shadow-card border border-paper-line hover:shadow-lift hover:-translate-y-1.5 mt-6"
       }`}
     >
       {/* شارة الأكثر طلباً */}
       {plan.featured && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 bg-accent text-white px-4 py-1 rounded-full text-xs font-bold shadow-md flex items-center gap-1">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20 bg-accent text-white px-4 py-1.5 rounded-full text-xs font-bold shadow-md flex items-center gap-1.5 whitespace-nowrap">
           <Star size={12} fill="currentColor" />
           <span>الأكثر طلباً</span>
         </div>
@@ -232,7 +232,7 @@ export default function SubscriptionCard({
                 </h5>
 
                 <div className="space-y-2">
-                  {variant.options.main.map((option) => (
+                  {variant.options.map((option) => (
                     <div
                       key={option.name}
                       className={`flex items-center justify-between gap-2 text-xs ${
