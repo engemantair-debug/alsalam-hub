@@ -1,21 +1,27 @@
 import { Check, Wifi, Zap, Star } from "lucide-react";
 
-export default function SubscriptionCard({ plan, onSubscribe, compact = false }) {
+export default function SubscriptionCard({
+  plan,
+  onSubscribe,
+  compact = false,
+}) {
   return (
     <div
-      className={`relative flex flex-col rounded-2xl p-7 sm:p-8 transition-all duration-300 h-full ${
+      className={`group relative flex flex-col rounded-2xl p-7 sm:p-8 transition-all duration-300 h-full overflow-hidden ${
         plan.featured
           ? "bg-primary text-white shadow-lift lg:-translate-y-3 border-2 border-primary"
           : "bg-white text-ink shadow-card border border-paper-line hover:shadow-lift hover:-translate-y-1.5"
       }`}
     >
+      {/* الأكثر طلبًا */}
       {plan.featured && (
-        <span className="absolute -top-3.5 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-soft whitespace-nowrap">
+        <span className="absolute -top-3.5 right-1/2 translate-x-1/2 inline-flex items-center gap-1.5 bg-accent text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-soft whitespace-nowrap z-30">
           <Star size={13} fill="currentColor" />
           الأكثر طلبًا
         </span>
       )}
 
+      {/* المحتوى الأساسي للكارد */}
       <div className="mb-6">
         <h3
           className={`font-display font-bold text-xl mb-1 ${
@@ -106,112 +112,6 @@ export default function SubscriptionCard({ plan, onSubscribe, compact = false })
         </div>
       )}
 
-{plan.variants && (
-  <div
-    className={`mb-6 rounded-xl border p-3 ${
-      plan.featured
-        ? "border-white/20 bg-white/10"
-        : "border-paper-line bg-paper-alt"
-    }`}
-  >
-    <h4
-      className={`text-sm font-bold mb-3 ${
-        plan.featured ? "text-white" : "text-ink"
-      }`}
-    >
-      تفاصيل الاشتراك
-    </h4>
-
-    <div className="grid grid-cols-2 gap-2.5">
-      {plan.variants.map((variant) => (
-        <div
-          key={variant.category}
-          className={`rounded-lg px-3 py-2 ${
-            plan.featured
-              ? "bg-white/10"
-              : "bg-white border border-paper-line"
-          }`}
-        >
-          <p
-            className={`text-xs font-bold mb-1.5 ${
-              plan.featured ? "text-white" : "text-primary"
-            }`}
-          >
-            {variant.category}
-          </p>
-
-          {variant.options.map((option) => (
-            <div
-              key={option.name}
-              className={`flex justify-between items-center gap-2 text-xs leading-5 ${
-                plan.featured ? "text-white/80" : "text-ink-soft"
-              }`}
-            >
-              <span>{option.name}</span>
-              <span
-                className={`font-bold whitespace-nowrap ${
-                  plan.featured ? "text-white" : "text-ink"
-                }`}
-              >
-                {option.price} ₪
-              </span>
-            </div>
-          ))}
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-        >
-          <h4
-            className={`text-sm font-bold mb-4 ${
-              plan.featured ? "text-white" : "text-ink"
-            }`}
-          >
-            تفاصيل الاشتراك
-          </h4>
-
-          <div className="space-y-4">
-            {plan.variants.map((variant) => (
-              <div key={variant.category}>
-                <div
-                  className={`text-sm font-bold mb-2 ${
-                    plan.featured ? "text-white" : "text-primary"
-                  }`}
-                >
-                  {variant.category}
-                </div>
-
-                <div className="space-y-1.5">
-                  {variant.options.map((option) => (
-                    <div
-                      key={option.name}
-                      className={`flex justify-between items-center text-sm ${
-                        plan.featured
-                          ? "text-white/80"
-                          : "text-ink-soft"
-                      }`}
-                    >
-                      <span>{option.name}</span>
-
-                      <span
-                        className={`font-bold ${
-                          plan.featured
-                            ? "text-white"
-                            : "text-ink"
-                        }`}
-                      >
-                        {option.price} ₪
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       {/* المميزات */}
       <ul className="flex flex-col gap-3 mb-8 flex-1">
         {plan.features.map((f) => (
@@ -251,6 +151,89 @@ export default function SubscriptionCard({ plan, onSubscribe, compact = false })
       >
         اشترك الآن
       </button>
+
+      {/* =========================
+          Hover Overlay
+          ========================= */}
+      {plan.variants && (
+        <div
+          className={`absolute inset-0 z-20 rounded-2xl p-6 sm:p-7
+            opacity-0 invisible
+            group-hover:opacity-100 group-hover:visible
+            transition-all duration-300
+            flex flex-col justify-center
+            backdrop-blur-md
+            ${
+              plan.featured
+                ? "bg-primary/95 text-white"
+                : "bg-white/95 text-ink"
+            }`}
+        >
+          {/* عنوان التفاصيل */}
+          <div className="text-center mb-5">
+            <h4
+              className={`text-lg font-bold ${
+                plan.featured ? "text-white" : "text-primary"
+              }`}
+            >
+              تفاصيل الاشتراك
+            </h4>
+
+            <p
+              className={`text-xs mt-1 ${
+                plan.featured ? "text-white/60" : "text-ink-soft"
+              }`}
+            >
+              مرّر المؤشر لرؤية الأسعار
+            </p>
+          </div>
+
+          {/* الأسعار */}
+          <div className="grid grid-cols-2 gap-3">
+            {plan.variants.map((variant) => (
+              <div
+                key={variant.category}
+                className={`rounded-xl p-3 border ${
+                  plan.featured
+                    ? "bg-white/10 border-white/15"
+                    : "bg-paper-alt border-paper-line"
+                }`}
+              >
+                <p
+                  className={`text-xs font-bold mb-2 ${
+                    plan.featured ? "text-white" : "text-primary"
+                  }`}
+                >
+                  {variant.category}
+                </p>
+
+                <div className="space-y-1">
+                  {variant.options.map((option) => (
+                    <div
+                      key={option.name}
+                      className={`flex justify-between items-center gap-2 text-xs ${
+                        plan.featured
+                          ? "text-white/80"
+                          : "text-ink-soft"
+                      }`}
+                    >
+                      <span>{option.name}</span>
+
+                      <span
+                        className={`font-bold whitespace-nowrap ${
+                          plan.featured ? "text-white" : "text-ink"
+                        }`}
+                      >
+                        {option.price} ₪
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
